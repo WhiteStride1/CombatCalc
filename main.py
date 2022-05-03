@@ -58,6 +58,7 @@ class GUI:
         shows combat level in gui
         :return:
         """
+        self.error_label.config(text=self.attackEntry.get())
 
 
 
