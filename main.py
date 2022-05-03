@@ -1,27 +1,44 @@
 from tkinter import *
 
-window = Tk()
+class GUI:
+    def __init__(self, window):
+        self.window = window
 
-attackNameLabel = Label(window, text='Attack: ').grid(row=0,column=0)
-attackLevelEntry = Entry(window).grid(row=0,column=1)
+        self.attackLabel = Label(window, text='Attack: ').grid(row=0, column=0,padx=5, pady=5)
+        self.attackEntry = Entry(window).grid(row=0, column=1, padx=5, pady=5)
 
-strengthLabel = Label(window, text='Strength: ').grid(row=1,column=0)
-strengthLevelEntry = Entry(window).grid(row=1,column=1)
+        self.strengthLabel = Label(window, text='Strength: ').grid(row=1, column=0, padx=5, pady=5)
+        self.strengthEntry = Entry(window).grid(row=1, column=1, padx=5, pady=5)
 
-defenceLabel = Label(window, text='Defence: ').grid(row=2, column=0)
-defenseLevelEntry = Entry(window).grid(row=2, column=1)
+        self.strengthLabel = Label(window, text='Strength: ').grid(row=1, column=0, padx=5, pady=5)
+        self.strengthEntry = Entry(window).grid(row=1, column=1, padx=5, pady=5)
 
-hitpointsLabel = Label(window, text='Hitpoints: ').grid(row=3, column=0)
-hitpointsLevelEntry = Entry(window).grid(row=3, column=1)
+        self.defenseLabel = Label(window, text='Defense: ').grid(row=2, column=0, padx=5, pady=5)
+        self.defenseEntry = Entry(window).grid(row=2, column=1, padx=5, pady=5)
 
-rangeLabel = Label(window, text='Range: ').grid(row=0, column=3)
-rangeLevelEntry = Entry(window).grid(row=0, column=4)
+        self.hitpointsLabel = Label(window, text='Hitpoints: ').grid(row=3, column=0, padx=5, pady=5)
+        self.hitpointsEntry = Entry(window).grid(row=3, column=1, padx=5, pady=5)
 
-magicLabel = Label(window, text='Magic: ').grid(row=1, column=3)
-magicLevelEntry = Entry(window).grid(row=1, column=4)
+        self.rangeLabel = Label(window, text='Ranged: ').grid(row=0, column=2, padx=5, pady=5)
+        self.rangeEntry = Entry(window).grid(row=0, column=3, padx=5, pady=5)
 
-prayerLabel = Label(window, text='Prayer: ').grid(row=2, column=3)
-prayerLevelEntry = Entry(window).grid(row=2, column=4)
+        self.magicLabel = Label(window, text='Magic: ').grid(row=1, column=2, padx=5, pady=5)
+        self.magicEntry = Entry(window).grid(row=1, column=3, padx=5, pady=5)
 
-calculateButton = Button(window,text='Calculate').grid(row=4,column=0,columnspan=2)
-window.mainloop()
+        self.prayerLabel = Label(window, text='Prayer: ').grid(row=2, column=2, padx=5, pady=5)
+        self.prayerEntry = Entry(window).grid(row=2, column=3, padx=5, pady=5)
+
+        self.calculateButton = Button(window, text='Calculate').grid(row=3, column=2, columnspan=2)
+
+
+def main():
+    window = Tk()
+    window.title('OSRS Combat Calculator')
+    window.geometry('480x320')
+    window.resizable(False, False)
+
+    GUI(window)
+    window.mainloop()
+
+if __name__ == "__main__":
+    main()
