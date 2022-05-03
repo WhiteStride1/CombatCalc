@@ -29,7 +29,7 @@ class GUI:
         self.defenseEntry = Entry(window, textvariable=defense_var)
         self.defenseEntry.grid(row=2, column=1, padx=5, pady=5)
 
-        hitpoints_var = tkinter.IntVar(value=1)
+        hitpoints_var = tkinter.IntVar(value=10)
         self.hitpointsLabel = Label(window, text='Hitpoints: ')
         self.hitpointsLabel.grid(row=3, column=0, padx=5, pady=5)
         self.hitpointsEntry = Entry(window, textvariable=hitpoints_var)
@@ -54,9 +54,9 @@ class GUI:
         self.prayerEntry.grid(row=2, column=3, padx=5, pady=5)
 
         self.combat_level = Label(window, text="")
-        self.combat_level.grid(row=4, column=0)
+        self.combat_level.grid(row=4, column=1)
         self.error_label = Label(window, text="")
-        self.error_label.grid(row=5, column=0)
+        self.error_label.grid(row=5, column=1)
 
         self.calculateButton = Button(window, text='Calculate', command=self.clicked).grid(row=3, column=2, columnspan=2)
 
@@ -66,21 +66,36 @@ class GUI:
         :return:
         """
 
-        attack = int(self.attackEntry.get())
-        strength = int(self.strengthEntry.get())
-        defense = int(self.defenseEntry.get())
-        HP = int(self.hitpointsEntry.get())
-        ranged = int(self.rangeEntry.get())
-        magic = int(self.magicEntry.get())
-        prayer = int(self.magicEntry.get())
+        self.error_label.config(text="")
+        self.combat_level.config(text="")
 
-        base = .25*(defense+HP+floor(.5*prayer))
-        mele = .325*(attack+strength)
-        ranging = .325*float(floor(ranged*1.5))
-        mage = .325*float(floor(magic*1.5))
+        try:
+            attack = int(self.attackEntry.get())
+            strength = int(self.strengthEntry.get())
+            defense = int(self.defenseEntry.get())
+            HP = int(self.hitpointsEntry.get())
+            ranged = int(self.rangeEntry.get())
+            magic = int(self.magicEntry.get())
+            prayer = int(self.magicEntry.get())
 
-        final = base+max(mele,ranging,mage)
-        print(final)
+            base = .25 * (defense + HP + floor(.5 * prayer))
+            mele = .325 * (attack + strength)
+            ranging = .325 * float(floor(ranged * 1.5))
+            mage = .325 * float(floor(magic * 1.5))
+        except TypeError:
+            self.error_label.config("only intergers")
+        except ValueError:
+            self.error_label.config("values > 0")
+        base = .25 * (defense + HP + floor(.5 * prayer))
+        mele = .325 * (attack + strength)
+        ranging = .325 * float(floor(ranged * 1.5))
+        mage = .325 * float(floor(magic * 1.5))
+
+        final = base + max(mele, ranging, mage)
+        if attack <= 0 or strength <=0 or defense <=0 or HP <=0 or ranged <=0 or magic <= 0 or prayer <= 0:
+            self.error_label.config(text="Enter Values > or Equal to 1")
+        else:
+            self.combat_level.config(text="combat level {:.3f}".format(final))
 
 
 
@@ -94,7 +109,7 @@ def main():
     """
     window = Tk()
     window.title('OSRS Combat Calculator')
-    window.geometry('480x320')
+    window.geometry('500x340')
     window.resizable(False, False)
 
     GUI(window)
