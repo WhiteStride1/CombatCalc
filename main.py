@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import *
-
+from math import floor
 
 class GUI:
     def __init__(self, window):
@@ -65,6 +65,22 @@ class GUI:
         shows combat level in gui
         :return:
         """
+
+        attack = int(self.attackEntry.get())
+        strength = int(self.strengthEntry.get())
+        defense = int(self.defenseEntry.get())
+        HP = int(self.hitpointsEntry.get())
+        ranged = int(self.rangeEntry.get())
+        magic = int(self.magicEntry.get())
+        prayer = int(self.magicEntry.get())
+
+        base = .25*(defense+HP+floor(.5*prayer))
+        mele = .325*(attack+strength)
+        ranging = .325*float(floor(ranged*1.5))
+        mage = .325*float(floor(magic*1.5))
+
+        final = base+max(mele,ranging,mage)
+        print(final)
 
 
 
