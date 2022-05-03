@@ -11,43 +11,43 @@ class GUI:
 
         self.window = window
 
-        attack_var = tkinter.IntVar(value=1)
+        attack_var = tkinter.StringVar(value=1)
         self.attackLabel = Label(window, text='Attack: ')
         self.attackLabel.grid(row=0, column=0, padx=5, pady=5)
         self.attackEntry = Entry(window, textvariable=attack_var)
         self.attackEntry.grid(row=0, column=1, padx=5, pady=5)
 
-        strength_var = tkinter.IntVar(value=1)
+        strength_var = tkinter.StringVar(value=1)
         self.strengthLabel = Label(window, text='Strength: ')
         self.strengthLabel.grid(row=1, column=0, padx=5, pady=5)
         self.strengthEntry = Entry(window, textvariable=strength_var)
         self.strengthEntry.grid(row=1, column=1, padx=5, pady=5)
 
-        defense_var = tkinter.IntVar(value=1)
+        defense_var = tkinter.StringVar(value=1)
         self.defenseLabel = Label(window, text='Defense: ')
         self.defenseLabel.grid(row=2, column=0, padx=5, pady=5)
         self.defenseEntry = Entry(window, textvariable=defense_var)
         self.defenseEntry.grid(row=2, column=1, padx=5, pady=5)
 
-        hitpoints_var = tkinter.IntVar(value=10)
+        hitpoints_var = tkinter.StringVar(value=10)
         self.hitpointsLabel = Label(window, text='Hitpoints: ')
         self.hitpointsLabel.grid(row=3, column=0, padx=5, pady=5)
         self.hitpointsEntry = Entry(window, textvariable=hitpoints_var)
         self.hitpointsEntry.grid(row=3, column=1, padx=5, pady=5)
 
-        range_var = tkinter.IntVar(value=1)
+        range_var = tkinter.StringVar(value=1)
         self.rangeLabel = Label(window, text='Ranged: ')
         self.rangeLabel.grid(row=0, column=2, padx=5, pady=5)
         self.rangeEntry = Entry(window, textvariable=range_var)
         self.rangeEntry.grid(row=0, column=3, padx=5, pady=5)
 
-        magic_var = tkinter.IntVar(value=1)
+        magic_var = tkinter.StringVar(value=1)
         self.magicLabel = Label(window, text='Magic: ')
         self.magicLabel.grid(row=1, column=2, padx=5, pady=5)
         self.magicEntry = Entry(window, textvariable=magic_var)
         self.magicEntry.grid(row=1, column=3, padx=5, pady=5)
 
-        prayer_var = tkinter.IntVar(value=1)
+        prayer_var = tkinter.StringVar(value=1)
         self.prayerLabel = Label(window, text='Prayer: ')
         self.prayerLabel.grid(row=2, column=2, padx=5, pady=5)
         self.prayerEntry = Entry(window, textvariable=prayer_var)
