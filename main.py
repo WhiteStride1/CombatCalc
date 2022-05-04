@@ -76,26 +76,22 @@ class GUI:
             HP = int(self.hitpointsEntry.get())
             ranged = int(self.rangeEntry.get())
             magic = int(self.magicEntry.get())
-            prayer = int(self.magicEntry.get())
+            prayer = int(self.prayerEntry.get())
 
             base = .25 * (defense + HP + floor(.5 * prayer))
             mele = .325 * (attack + strength)
             ranging = .325 * float(floor(ranged * 1.5))
             mage = .325 * float(floor(magic * 1.5))
-        except TypeError:
-            self.error_label.config("only intergers")
-        except ValueError:
-            self.error_label.config("values > 0")
-        base = .25 * (defense + HP + floor(.5 * prayer))
-        mele = .325 * (attack + strength)
-        ranging = .325 * float(floor(ranged * 1.5))
-        mage = .325 * float(floor(magic * 1.5))
 
-        final = base + max(mele, ranging, mage)
-        if attack <= 0 or strength <=0 or defense <=0 or HP <=0 or ranged <=0 or magic <= 0 or prayer <= 0:
-            self.error_label.config(text="Enter Values > or Equal to 1")
-        else:
-            self.combat_level.config(text="combat level {:.3f}".format(final))
+            final = base + max(mele, ranging, mage)
+            if attack < 1 or strength < 1 or defense < 1 or HP < 1 or ranged < 1 or magic < 1 or prayer <1:
+                self.combat_level.config(text='Please enter only Integers Greater than 0')
+            else:
+                self.combat_level.config(text='Combat Level: {:.2f}'.format(final))
+        except ValueError:
+            self.error_label.config(text='Please enter only Integers Greater than 0')
+        except TypeError:
+            self.error_label.config(text='Please enter only Integers Greater than 0')
 
 
 
