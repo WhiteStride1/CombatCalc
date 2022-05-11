@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import *
+from PIL import ImageTk, Image
 from math import floor
 
 class GUI:
@@ -58,6 +59,12 @@ class GUI:
         self.error_label = Label(window, text="")
         self.error_label.grid(row=5, column=1)
 
+        my_img = ImageTk.PhotoImage(Image.open('osrs-rat.png'))
+        my_label = Label(image=my_img)
+        my_label.image = my_img
+        my_label.grid(row=10, column=1)
+
+
         self.calculateButton = Button(window, text='Calculate', command=self.clicked).grid(row=3, column=2, columnspan=2)
 
     def clicked(self):
@@ -85,7 +92,7 @@ class GUI:
 
             final = base + max(mele, ranging, mage)
             if attack < 1 or strength < 1 or defense < 1 or HP < 1 or ranged < 1 or magic < 1 or prayer <1:
-                self.combat_level.config(text='Please enter only Integers Greater than 0')
+                self.error_label.config(text='Please enter only Integers Greater than 0')
             else:
                 self.combat_level.config(text='Combat Level: {:.2f}'.format(final))
         except ValueError:
@@ -105,8 +112,8 @@ def main():
     """
     window = Tk()
     window.title('OSRS Combat Calculator')
-    window.geometry('500x340')
-    window.resizable(False, False)
+    window.geometry('480x320')
+    window.resizable(True, True)
 
     GUI(window)
     window.mainloop()
