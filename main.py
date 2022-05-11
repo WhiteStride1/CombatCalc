@@ -59,12 +59,14 @@ class GUI:
         self.error_label = Label(window, text="")
         self.error_label.grid(row=5, column=1)
 
-        img_url = 'blank.png'
-        my_img = ImageTk.PhotoImage(Image.open(img_url))
-        my_label = Label(image=my_img)
-        my_label.image = my_img
-        my_label.grid(row=10, column=1)
+        self.blank_img = ImageTk.PhotoImage(Image.open('blank.png'))
+        self.img_label = Label(image=self.blank_img)
+        self.img_label.image = self.blank_img
+        self.img_label.grid(row=10, column=1)
 
+        self.rat_img = ImageTk.PhotoImage(Image.open('osrs-rat.png'))
+        self.giant_rat_img = ImageTk.PhotoImage(Image.open('osrs-giant-rat.png'))
+        self.hell_rat_img = ImageTk.PhotoImage(Image.open('osrs-hell-rat.png'))
 
         self.calculateButton = Button(window, text='Calculate', command=self.clicked).grid(row=3, column=2, columnspan=2)
 
@@ -96,24 +98,16 @@ class GUI:
                 self.error_label.config(text='Please enter only Integers Greater than 0')
             else:
                 self.combat_level.config(text='Combat Level: {:.2f}'.format(final))
-            if final < 56:
-                img_url = 'osrs-rat.png'
-                my_img = ImageTk.PhotoImage(Image.open(img_url))
-                my_label = Label(image=my_img)
-                my_label.image = my_img
-                my_label.grid(row=10, column=1)
+
+            if 0 < final < 56:
+                self.img_label.config(image=self.rat_img)
+                self.img_label.image = self.rat_img
             if 55 < final < 89:
-                img_url = 'osrs-giant-rat.png'
-                my_img = ImageTk.PhotoImage(Image.open(img_url))
-                my_label = Label(image=my_img)
-                my_label.image = my_img
-                my_label.grid(row=10, column=1)
+                self.img_label.config(image=self.giant_rat_img)
+                self.img_label.image = self.giant_rat_img
             if 88 < final:
-                img_url = 'osrs-hell-rat.png'
-                my_img = ImageTk.PhotoImage(Image.open(img_url))
-                my_label = Label(image=my_img)
-                my_label.image = my_img
-                my_label.grid(row=10, column=1)
+                self.img_label.config(image=self.hell_rat_img)
+                self.img_label.image = self.hell_rat_img
 
         except ValueError:
             self.error_label.config(text='Please enter only Integers Greater than 0')
