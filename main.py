@@ -98,22 +98,27 @@ class GUI:
                 self.error_label.config(text='Please enter only Integers Greater than 0')
             else:
                 self.combat_level.config(text='Combat Level: {:.2f}'.format(final))
+            self.img_label.config(image=self.blank_img)
+            self.img_label.image = self.blank_img
+            if 0 < final < 56:
+                self.img_label.config(image=self.rat_img)
+                self.img_label.image = self.rat_img
+            if 55 < final < 89:
+                self.img_label.config(image=self.giant_rat_img)
+                self.img_label.image = self.giant_rat_img
+            if 88 < final:
+                self.img_label.config(image=self.hell_rat_img)
+                self.img_label.image = self.hell_rat_img
         except ValueError:
+            self.img_label.config(image=self.blank_img)
+            self.img_label.image = self.blank_img
             self.error_label.config(text='Please enter only Integers Greater than 0')
         except TypeError:
+            self.img_label.config(image=self.blank_img)
+            self.img_label.image = self.blank_img
             self.error_label.config(text='Please enter only Integers Greater than 0')
 
-        self.img_label.config(image=self.blank_img)
-        self.img_label.image = self.blank_img
-        if 0 < final < 56:
-            self.img_label.config(image=self.rat_img)
-            self.img_label.image = self.rat_img
-        if 55 < final < 89:
-            self.img_label.config(image=self.giant_rat_img)
-            self.img_label.image = self.giant_rat_img
-        if 88 < final:
-            self.img_label.config(image=self.hell_rat_img)
-            self.img_label.image = self.hell_rat_img
+
 
 
 
