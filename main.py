@@ -59,7 +59,8 @@ class GUI:
         self.error_label = Label(window, text="")
         self.error_label.grid(row=5, column=1)
 
-        my_img = ImageTk.PhotoImage(Image.open('osrs-rat.png'))
+        img_url = 'blank.png'
+        my_img = ImageTk.PhotoImage(Image.open(img_url))
         my_label = Label(image=my_img)
         my_label.image = my_img
         my_label.grid(row=10, column=1)
@@ -95,6 +96,25 @@ class GUI:
                 self.error_label.config(text='Please enter only Integers Greater than 0')
             else:
                 self.combat_level.config(text='Combat Level: {:.2f}'.format(final))
+            if final < 56:
+                img_url = 'osrs-rat.png'
+                my_img = ImageTk.PhotoImage(Image.open(img_url))
+                my_label = Label(image=my_img)
+                my_label.image = my_img
+                my_label.grid(row=10, column=1)
+            if 55 < final < 89:
+                img_url = 'osrs-giant-rat.png'
+                my_img = ImageTk.PhotoImage(Image.open(img_url))
+                my_label = Label(image=my_img)
+                my_label.image = my_img
+                my_label.grid(row=10, column=1)
+            if 88 < final:
+                img_url = 'osrs-hell-rat.png'
+                my_img = ImageTk.PhotoImage(Image.open(img_url))
+                my_label = Label(image=my_img)
+                my_label.image = my_img
+                my_label.grid(row=10, column=1)
+
         except ValueError:
             self.error_label.config(text='Please enter only Integers Greater than 0')
         except TypeError:
