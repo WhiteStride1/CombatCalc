@@ -126,8 +126,8 @@ def main():
     """
     window = Tk()
     window.title('OSRS Combat Calculator')
-    window.geometry('480x320')
-    window.resizable(True, True)
+    window.geometry('640x400')
+    window.resizable(False, False)
 
     GUI(window)
     window.mainloop()
